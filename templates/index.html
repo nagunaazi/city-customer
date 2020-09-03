@@ -1,0 +1,72 @@
+<html>
+<body>
+<table align="center" border="2">
+    <tr>
+        <th>
+        <form action="{% url 'index' %}" method="post">
+            {% csrf_token %}
+            {{ ctf.as_p }}
+            <button type="submit" value="city" name="b1">Save</button>
+        </form>
+        </th>
+        <th>
+            <table align="center" border="2">
+                <tr>
+                    <th>City Name</th>
+                    <th>Pincode</th>
+                    <th>Delete</th>
+                </tr>
+
+                {% for x in call %}
+                <tr>
+                    <th>{{ x.city_name }}</th>
+                    <th>{{ x.pin_code }}</th>
+                    <th>
+                        <a href={% url 'delete' %}?did={{ x.pin_code }}>Yes</a></th>
+                </tr>
+                {% endfor %}
+            </table>
+        </th>
+    </tr>
+
+
+
+
+
+
+
+    <tr>
+        <th>
+            <form action="{% url 'index' %}" method="post">
+                {% csrf_token %}
+                {{ cuf.as_p }}
+                <button type="submit" value="customer" name="b1">Save</button>
+            </form>
+        </th>
+        <th>
+            <table align="center" border="2">
+                   <tr>
+                       <th>ID NO</th>
+                       <th>Name</th>
+                       <th>Contact NO</th>
+                       <th>CITY</th>
+                       <th>Delete</th>
+                   </tr>
+                {% for x in cuall %}
+                    <tr>
+                        <th>{{ x.cus_ID }}</th>
+                        <th>{{ x.name }}</th>
+                        <th>{{ x.cno }}</th>
+                        <th>{{ x.city_pin_id }}</th>
+                        <th>Yes</th>
+                    </tr>
+                {% endfor %}
+            </table>
+        </th>
+    </tr>
+
+
+
+</table>
+</body>
+</html>
